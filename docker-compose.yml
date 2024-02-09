@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  api5:
+    container_name: api5
+    restart: unless-stopped
+    build:
+      context: ./
+    ports:
+      - 0.0.0.0:8010:${PORT}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "2"
+    command: "python start.py"
